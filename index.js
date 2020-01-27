@@ -1,5 +1,5 @@
 
-const { path } = require('@vuepress/shared-utils')
+const { path } = require('@vuepress/shared-utils');
 
 module.exports = (options) => ({
     alias: {
@@ -13,4 +13,4 @@ module.exports = (options) => ({
         SEARCH_HOTKEYS: options.searchHotkeys || ['s', '/'],
         DOCUMENTS: options.documents
     }
-})
+});

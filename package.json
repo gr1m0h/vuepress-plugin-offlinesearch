@@ -1,6 +1,6 @@
 {
   "name": "@datev_eg/vuepress-plugin-offlinesearch",
-  "version": "0.4.23",
+  "version": "0.6.24",
   "description": "Offline fulltext search for vuepress books using lunr search.",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/self-studie/vuepress-plugin.git"
+    "url": "git+https://gitlab.com/datev/vuepress-plugin-offlinesearch"
   },
   "authors": [
     "bastian.scherber@gmail.com",
@@ -17,9 +17,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://gitlab.com/self-studie/vuepress-plugin/issues"
+    "url": "https://gitlab.com/datev/vuepress-plugin-offlinesearch/issues"
   },
-  "homepage": "https://gitlab.com/self-studie/vuepress-plugin#readme",
+  "homepage": "https://gitlab.com/datev/vuepress-plugin-offlinesearch#readme",
   "dependencies": {
     "lunr": "^2.3.8"
   },
