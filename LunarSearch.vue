@@ -75,7 +75,7 @@ https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-search
 
             suggestions() {
                 const query = this.query.trim().toLowerCase() + '*';
-                if (!query || query === '**') {
+                if (!query || query === '*') {
                     return
                 }
 
