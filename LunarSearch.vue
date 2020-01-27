@@ -51,11 +51,11 @@ https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-search
 
 <script>
     /* global SEARCH_MAX_SUGGESTIONS, SEARCH_PATHS, SEARCH_HOTKEYS */
-    const lunr = require('lunr')
+    const lunr = require('lunr');
     export default {
         name: 'LunarSearch',
 
-        data () {
+        data() {
             return {
                 query: '',
                 focused: false,
@@ -65,7 +65,7 @@ https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-search
         },
 
         computed: {
-            showSuggestions () {
+            showSuggestions() {
                 return (
                     this.focused
                     && this.suggestions
@@ -73,13 +73,14 @@ https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-search
                 )
             },
 
-            suggestions () {
+            suggestions() {
                 const query = '*' + this.query.trim().toLowerCase() + '*';
-                if (!query|| query === '**') {
+                if (!query || query === '**') {
                     return
                 }
 
-                const max = this.$site.themeConfig.searchMaxSuggestions || SEARCH_MAX_SUGGESTIONS;
+                let max = SEARCH_MAX_SUGGESTIONS;
+                if (max < 1) max = 5;
                 const idx = lunr(function () {
                     this.ref('sectionSlug');
                     this.field('sectionContent');
@@ -91,9 +92,11 @@ https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-search
                 });
 
                 const results = idx.search(query);
-                console.log('lunr: ', results);
                 let returnArray = [];
-                for(let currentResult of results){
+                if(max > results.length) max = results.length;
+                results.splice(max, results.length - max);
+
+                for (let currentResult of results) {
                     returnArray.push(DOCUMENTS.find(x => x.sectionSlug === currentResult.ref));
                 }
 
@@ -101,7 +104,7 @@ https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-search
             },
 
             // make suggestions align right when there are not enough items
-            alignRight () {
+            alignRight() {
                 const navCount = (this.$site.themeConfig.nav || []).length;
                 const repo = this.$site.repo ? 1 : 0;
                 return navCount + repo <= 2;
@@ -109,17 +112,17 @@ https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-search
         },
 
 
-        mounted () {
+        mounted() {
             this.placeholder = this.$site.themeConfig.searchPlaceholder || ''
             document.addEventListener('keydown', this.onHotkey)
         },
 
-        beforeDestroy () {
+        beforeDestroy() {
             document.removeEventListener('keydown', this.onHotkey)
         },
 
         methods: {
-            getPageLocalePath (page) {
+            getPageLocalePath(page) {
                 for (const localePath in this.$site.locales || {}) {
                     if (localePath !== '/' && page.path.indexOf(localePath) === 0) {
                         return localePath
@@ -128,11 +131,13 @@ https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-search
                 return '/'
             },
 
-            isSearchable (page) {
+            isSearchable(page) {
                 let searchPaths = SEARCH_PATHS
 
                 // all paths searchables
-                if (searchPaths === null) { return true }
+                if (searchPaths === null) {
+                    return true
+                }
 
                 searchPaths = Array.isArray(searchPaths) ? searchPaths : new Array(searchPaths)
 
@@ -141,14 +146,14 @@ https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-search
                 }).length > 0
             },
 
-            onHotkey (event) {
+            onHotkey(event) {
                 if (event.srcElement === document.body && SEARCH_HOTKEYS.includes(event.key)) {
                     this.$refs.input.focus()
                     event.preventDefault()
                 }
             },
 
-            onUp () {
+            onUp() {
                 if (this.showSuggestions) {
                     if (this.focusIndex > 0) {
                         this.focusIndex--
@@ -158,7 +163,7 @@ https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-search
                 }
             },
 
-            onDown () {
+            onDown() {
                 if (this.showSuggestions) {
                     if (this.focusIndex < this.suggestions.length - 1) {
                         this.focusIndex++
@@ -168,7 +173,7 @@ https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-search
                 }
             },
 
-            go (i) {
+            go(i) {
                 if (!this.showSuggestions) {
                     return
                 }
@@ -177,11 +182,11 @@ https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-search
                 this.focusIndex = 0
             },
 
-            focus (i) {
+            focus(i) {
                 this.focusIndex = i
             },
 
-            unfocus () {
+            unfocus() {
                 this.focusIndex = -1
             }
         }
@@ -193,6 +198,7 @@ https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-search
         display inline-block
         position relative
         margin-right 1rem
+
         input
             cursor text
             width 20rem
@@ -208,9 +214,11 @@ https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-search
             transition all .2s ease
             /*background #fff url(search.svg) 0.6rem 0.5rem no-repeat*/
             background-size 1rem
+
             &:focus
                 cursor auto
                 border-color $accentColor
+
         .suggestions
             background #fff
             width 20rem
@@ -220,23 +228,30 @@ https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-search
             border-radius 6px
             padding 0.4rem
             list-style-type none
+
             &.align-right
                 right 0
+
         .suggestion
             line-height 1.4
             padding 0.4rem 0.6rem
             border-radius 4px
             cursor pointer
+
             a
                 white-space normal
                 color lighten($textColor, 35%)
+
                 .page-title
                     font-weight 600
+
                 .header
                     font-size 0.9em
                     margin-left 0.25em
+
             &.focused
                 background-color #f3f4f5
+
                 a
                     color $accentColor
 
@@ -247,6 +262,7 @@ https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-search
                 width 0
                 border-color transparent
                 position relative
+
                 &:focus
                     cursor text
                     left 0
@@ -265,8 +281,10 @@ https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-search
     @media (max-width: $MQMobile)
         .search-box
             margin-right 0
+
             input
                 left 1rem
+
             .suggestions
                 right 0
 
@@ -274,6 +292,7 @@ https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-search
         .search-box
             .suggestions
                 width calc(100vw - 4rem)
+
             input:focus
                 width 8rem
 </style>
