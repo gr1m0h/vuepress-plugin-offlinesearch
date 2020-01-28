@@ -4,7 +4,7 @@ const { path } = require('@vuepress/shared-utils');
 module.exports = (options) => ({
     alias: {
         '@SearchBox':
-            path.resolve(__dirname, 'LunarSearch.vue')
+            path.resolve(__dirname, 'LunrSearch.vue')
     },
 
     define: {
