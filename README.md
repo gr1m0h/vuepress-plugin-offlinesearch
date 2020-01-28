@@ -20,7 +20,7 @@ Here you can choose with the parameter searchMaxSuggestions how many searchResul
 
 * Provide required documents.json in .vuepress/public/document.json  
 
-The plugin require following json structure to build it's index. The json can be either generated
+The plugin requires the following json structure to build it's index. The json can be either generated
 by your own generator, by hand or by using our [npm-cli tool](https://gitlab.com/datev/vuepress-documents-parser-cli) 
 
 If you choose to use the vuepress-documents-parser-cli, generating the documents.json file is as simple as
