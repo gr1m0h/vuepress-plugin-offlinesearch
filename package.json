@@ -1,6 +1,6 @@
 {
   "name": "@datev_eg/vuepress-plugin-offlinesearch",
-  "version": "0.6.25",
+  "version": "0.6.26",
   "description": "Offline fulltext search for vuepress books using lunr search.",
   "main": "index.js",
   "scripts": {
