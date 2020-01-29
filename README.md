@@ -8,7 +8,7 @@ This plugin extends the regular vuepress-search-plugin with functionality to sea
 
 `npm i @datev_eg/vuepress-plugin-offlinesearch`
 
-* Add plugin to .vuepress/config.js  
+* Add the plugin to .vuepress/config.js  
 
 Here you can choose with the parameter searchMaxSuggestions how many searchResults will be shown in the drop down field. default: 5
 
@@ -27,10 +27,6 @@ If you choose to use the vuepress-documents-parser-cli, generating the documents
 installing the package with 
 
 `npm i @datev_eg/vuepress-plugin-offlinesearch`
-
-running
-
-`npm link`
 
 and executing the command `generate-documents` from your command line.
 
@@ -51,7 +47,12 @@ Note that the sectionHeader and sectionContent are the field that will later be 
 
 After these steps the search for your vuepress Site should be set up and ready to go.  
 
+## Contributing 
 
+Contributions are welcome !
+
+ 
+If you want to contribute or have a question please just open a new Issue.
 
 
 
