@@ -1,7 +1,7 @@
 # Vuepress-plugin-offlinesearch
 
 This plugin extends the regular vuepress-search-plugin with functionality to search through all published md files.  
-
+[vuepress-search-plugin](https://vuepress.vuejs.org/plugin/official/plugin-search.html)
 ## Usage
 
 * Add the plugin as dependency:  
