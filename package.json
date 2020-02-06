@@ -1,6 +1,6 @@
 {
-  "name": "@datev_eg/vuepress-plugin-offlinesearch",
-  "version": "0.6.27",
+  "name": "@datev/vuepress-plugin-offlinesearch",
+  "version": "0.6.28",
   "description": "Offline fulltext search for vuepress books using lunr search.",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,7 @@
   "authors": [
     "bastian.scherber@gmail.com",
     "malte.roenne@gmx.de",
-    "mavin.hohbach@gmx.de"
+    "marvin.hohbach@web.de"
   ],
   "license": "MIT",
   "bugs": {
@@ -30,5 +30,5 @@
     "vuepress",
     "lunr"
   ],
-  "author": "bastian.scherber@gmail.com, malte.roenne@gmx.de"
+  "author": "bastian.scherber@gmail.com, malte.roenne@gmx.de, marvin.hohbach@web.de"
 }
