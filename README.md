@@ -1,32 +1,42 @@
 # Vuepress-plugin-offlinesearch
+The search is based on the [official vuepress search plugin](https://vuepress.vuejs.org/plugin/official/plugin-search.html).
+But instead of just indexing headers, it leverages [lunrjs](https://lunrjs.com/) to enable a (simplistic) full-text search.
+Although the [Algolia](https://vuepress.vuejs.org/theme/default-theme-config.html#algolia-docsearch) search is great, it may not be an option for teams sitting behind a corporate firewall.
 
-This plugin extends the regular vuepress-search-plugin with functionality to search through all published md files.  
-[vuepress-search-plugin](https://vuepress.vuejs.org/plugin/official/plugin-search.html)
+For each search result, the page title and the title of the section, where the text was found, are displayed. The links take you right to that section.
+
+## Demo
+We created a sample project that showcases the search. Check it out here: https://datev.gitlab.io/vuepress-plugin-offlinesearch-example/
+
 ## Usage
 
 * Add the plugin as dependency:  
 
-`npm i @datev_eg/vuepress-plugin-offlinesearch`
+``` sh
+npm i @datev/vuepress-plugin-offlinesearch
+```
 
 * Add the plugin to .vuepress/config.js  
 
 Here you can choose with the parameter searchMaxSuggestions how many searchResults will be shown in the drop down field. default: 5
 
-```,
+``` sh
+    ,
     plugins: [
-        ['@datev_eg/vuepress-plugin-offlinesearch', {searchMaxSuggestions: 7, documents: require('../.vuepress/public/documents.json')}]
+        ['@datev/vuepress-plugin-offlinesearch', {searchMaxSuggestions: 7, documents: require('../.vuepress/public/documents.json')}]
     ],
 ```
 
 * Provide required documents.json in .vuepress/public/document.json  
 
-The plugin requires the following json structure to build it's index. The json can be either generated
+The plugin requires the following json structure to build its index. The json can be either generated
 by your own generator, by hand or by using our [npm-cli tool](https://gitlab.com/datev/vuepress-documents-parser-cli) 
 
 If you choose to use the vuepress-documents-parser-cli, generating the documents.json file is as simple as
 installing the package with 
-
-`npm i @datev_eg/vuepress-plugin-offlinesearch`
+``` sh
+npm i @datev_eg/vuepress-plugin-offlinesearch
+```
 
 and executing the command `generate-documents` from your command line.
 
