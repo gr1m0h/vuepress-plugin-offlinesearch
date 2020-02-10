@@ -82,6 +82,7 @@ https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-search
                 let max = SEARCH_MAX_SUGGESTIONS;
                 if (max < 1) max = 5;
                 const idx = lunr(function () {
+                    this.pipeline.remove(lunr.stemmer);
                     this.ref('sectionSlug');
                     this.field('sectionContent');
                     this.field('sectionHeader');
