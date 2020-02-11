@@ -39,7 +39,8 @@ Disclaimer: taken form [here](https://vuepress.vuejs.org/plugin/official/plugin-
 Disclaimer: taken form [here](https://vuepress.vuejs.org/plugin/official/plugin-search.html#searchhotkeys)
 
 #### `activateStemming`
-* Activates lunr's stemming feature. Please refer to the [official docs](https://lunrjs.com/guides/core_concepts.html#stemming) for more information on stemming.
+* Activates lunr's stemming feature. In our experience, the search works better when this option is disabled.
+Please refer to the [official docs](https://lunrjs.com/guides/core_concepts.html#stemming) for more information on stemming.
 * Type: `boolean`
 * Default: `false`
 
