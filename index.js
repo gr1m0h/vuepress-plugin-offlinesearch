@@ -12,6 +12,6 @@ module.exports = (options) => ({
         SEARCH_PATHS: options.test || null,
         SEARCH_HOTKEYS: options.searchHotkeys || ['s', '/'],
         DOCUMENTS: options.documents,
-        ACTIVATE_STEMMING: options.stemming || false,
+        ACTIVATE_STEMMING: options.activateStemming || false,
     }
 });
