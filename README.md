@@ -44,7 +44,7 @@ Disclaimer: taken form [here](https://vuepress.vuejs.org/plugin/official/plugin-
 * Default: `false`
 
 #### `documents`
-* Path to your documents file, e.g. `.vuepress/public/document.json`. Note that the file needs to be [deployed as an asset](https://v1.vuepress.vuejs.org/guide/assets.html).
+* Path to your documents file, e.g. `'../.vuepress/public/documents.json'`. Note that the file needs to be [deployed as an asset](https://v1.vuepress.vuejs.org/guide/assets.html).
 * Type: `string`
 * required
 
