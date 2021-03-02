@@ -52,6 +52,9 @@ https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-search
 <script>
     /* global SEARCH_MAX_SUGGESTIONS, SEARCH_PATHS, SEARCH_HOTKEYS */
     const lunr = require('lunr');
+    require('lunr-languages/lunr.stemmer.support.js')(lunr);
+    require('lunr-languages/tinyseg.js')(lunr);
+    require('lunr-languages/lunr.ja.js')(lunr);
     export default {
         name: 'LunarSearch',
 
@@ -88,6 +91,7 @@ https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-search
                     this.ref('sectionSlug');
                     this.field('sectionContent');
                     this.field('sectionHeader');
+                    this.use(lunr.ja);
 
                     DOCUMENTS.forEach(function (doc) {
                         this.add(doc)
